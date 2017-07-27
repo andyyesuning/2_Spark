@@ -51,6 +51,7 @@ from_unixtime(timestamp='字段', format='yyyy-MM-dd HH:mm:ss')
     |       2017-07-30|
     +-----------------+
     ```
+    
     - date_format(date, format)
     ```
     spark.createDataFrame([('2015-04-08',)]).select(date_format('_1', 'MM/dd/yyy')).show()
