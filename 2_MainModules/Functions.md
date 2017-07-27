@@ -1,4 +1,4 @@
-# [Functions][1]
+# :rocket: [Functions Learning][1] :facepunch:
 
 ---
 # 关系运算
