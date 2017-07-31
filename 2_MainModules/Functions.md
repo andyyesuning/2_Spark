@@ -6,7 +6,87 @@
 # 逻辑运算
 # 数值运算
 ---
+# pyspark.sql.Column
 
+- alias
+- name
+
+- desc
+- asc
+
+- cast
+- astype
+
+- between
+- bitwiseAND
+- bitwiseOR
+- bitwiseXOR
+
+
+
+
+
+- substr(startPos, length): col('id').substr(1, 3)
+- Return Boolean
+    - between(lowerBound, upperBound): between(2, 4)闭区间
+    - startswith
+    - endswith
+    - isNotNull: col('id').isNotNull()
+    - isNull: col('id').isNull()
+    - isin: col('id').isin()
+    - like: col('id').like('%1%')
+    - rlike
+    
+- when(condition, value).otherwise(value)
+```
+l = ['a','b','c','d']
+df.withColumn('new_column', when(col('id').isin(l), 'yes').otherwise('no')).show()
++---+----------+
+| id|new_column|
++---+----------+
+|  0|        no|
+|  1|        no|
++---+----------+
+```
+
+- over
+
+- getField
+```
+>>> from pyspark.sql import Row
+>>> df = sc.parallelize([Row(r=Row(a=1, b="b"))]).toDF()
+>>> df.select(df.r.getField("b")).show()
++---+
+|r.b|
++---+
+|  b|
++---+
+>>> df.select(df.r.a).show()
++---+
+|r.a|
++---+
+|  1|
++---+
+```
+
+- getItem
+```
+>>> df = sc.parallelize([([1, 2], {"key": "value"})]).toDF(["l", "d"])
+>>> df.select(df.l.getItem(0), df.d.getItem("key")).show()
++----+------+
+|l[0]|d[key]|
++----+------+
+|   1| value|
++----+------+
+>>> df.select(df.l[0], df.d["key"]).show()
++----+------+
+|l[0]|d[key]|
++----+------+
+|   1| value|
++----+------+
+```
+
+---
 # 日期函数
 - 当前日期
 ```
@@ -231,6 +311,26 @@ spark.range(10).selectExpr("histogram_numeric(id, 5)").show(1,False)
 - array类型长度函数: size(Array<T>)
 - 类型转换函数: cast(expr as <type>)
 ---
+# 其他
+- expr(str)
+```
+df.selectExpr("length(id)").show()
+df.select(expr("length(id)")).show()
++--------------------------+
+|length(CAST(id AS STRING))|
++--------------------------+
+|                         1|
++--------------------------+
+```
 
+- instr(str, substr)
+```
+spark.createDataFrame([('abcd',)]).select(instr('_1', 'b')).show()
++------------+
+|instr(_1, b)|
++------------+
+|           2|
++------------+
+```
 
   [1]: https://cwiki.apache.org/confluence/display/Hive/Tutorial#Tutorial-BuiltInFunctions
