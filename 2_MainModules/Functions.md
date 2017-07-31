@@ -16,7 +16,7 @@
 - substr(startPos, length): col('id').substr(1, 3)
 
 - Return Boolean
-    - between(lowerBound, upperBound): between(2, 4)闭区间
+- between(lowerBound, upperBound): between(2, 4)闭区间
     - startswith
     - endswith
     - isNotNull: col('id').isNotNull()
