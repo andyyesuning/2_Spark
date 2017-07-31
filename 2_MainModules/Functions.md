@@ -17,7 +17,7 @@
 
 - Return Boolean
 - between(lowerBound, upperBound): between(2, 4)闭区间
-    - startswith
+    - startswith
     - endswith
     - isNotNull: col('id').isNotNull()
     - isNull: col('id').isNull()
