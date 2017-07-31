@@ -7,25 +7,12 @@
 # 数值运算
 ---
 # pyspark.sql.Column
-
-- alias
-- name
+> 支持逻辑运算: df.b1 & df.b2
 
 - desc
 - asc
-
-- cast
-- astype
-
-- between
-- bitwiseAND
-- bitwiseOR
-- bitwiseXOR
-
-
-
-
-
+- cast(dataType)
+- astype(dataType)
 - substr(startPos, length): col('id').substr(1, 3)
 - Return Boolean
     - between(lowerBound, upperBound): between(2, 4)闭区间
@@ -50,6 +37,10 @@ df.withColumn('new_column', when(col('id').isin(l), 'yes').otherwise('no')).show
 ```
 
 - over
+
+- bitwiseAND
+- bitwiseOR
+- bitwiseXOR
 
 - getField
 ```
