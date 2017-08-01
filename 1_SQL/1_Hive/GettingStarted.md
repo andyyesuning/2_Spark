@@ -92,12 +92,12 @@ CREATE TABLE empty_table LIKE fbidm.yuanjie_test
     ALTER TABLE table_name ADD COLUMNS(col_name data_type [COMMENT col_comment], ...)
     ```
     
-    - REPLACE COLUMNS: 对应列覆盖修改
-    ```
-    ALTER TABLE table_name REPLACE COLUMNS(foo INT COMMENT 'only keep the first column')
+    - REPLACE COLUMNS: 对应列覆盖修改
+    ```
+    ALTER TABLE table_name REPLACE COLUMNS(foo INT COMMENT 'only keep     the first column')
     ```
     
-    - 修改列的名字、类型、位置、注释
+    - 修改列的名字、类型、位置、注释
     ```
     ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]
     ```
@@ -105,7 +105,7 @@ CREATE TABLE empty_table LIKE fbidm.yuanjie_test
     - 改变表文件格式与组织
     ```
     ALTER TABLE table_name SET FILEFORMAT file_format
-    ALTER TABLE table_name CLUSTERED BY(userid) SORTED BY(viewTime) INTO num_buckets BUCKETS
+    ALTER TABLE table_name CLUSTERED BY(userid) SORTED BY(viewTime)       INTO num_buckets BUCKETS
     ```
 
 ```
