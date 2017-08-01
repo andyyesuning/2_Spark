@@ -23,6 +23,21 @@ SHOW FUNCTIONS;
 DESC FUNCTION concat;
 SELECT col1[0], col2['b'], col3.c FROM complex; //查看数组、map、结构
 ```
+```
+CREATE TABLE window_test (url string, rate int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+LOAD DATA LOCAL INPATH '/opt/bin/short_opt/windows2.data' OVERWRITE INTO TABLE window_test;
+
+# data
+url1,12  
+url2,11  
+url1,23  
+url2,25  
+url1,58  
+url3,11  
+url2,25  
+url3,58  
+url2,11  
+```
 ---
 
 # DDL   
