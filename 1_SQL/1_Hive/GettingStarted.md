@@ -22,7 +22,9 @@ DESC FORMATTED table_name;
 SHOW FUNCTIONS;
 DESC FUNCTION concat;
 SELECT col1[0], col2['b'], col3.c FROM complex; //查看数组、map、结构
+row_number() over (partition by col1 order by col2)
 ```
+
 ```
 CREATE TABLE window_test (url string, rate int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INPATH '/opt/bin/short_opt/windows2.data' OVERWRITE INTO TABLE window_test;
