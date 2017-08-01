@@ -6,6 +6,8 @@
 # 逻辑运算
 # 数值运算
 ---
+
+---
 # pyspark.sql.Column
 > 支持逻辑运算: df.b1 & df.b2
 
