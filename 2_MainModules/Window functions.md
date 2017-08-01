@@ -48,9 +48,10 @@ spark.range(10).select(ntile(5).over(Window.partitionBy(lit(1)).orderBy('id'))).
 |       5|
 |       5|
 +--------+
+```
+
 - first(col, ignorenulls=False): FIRST_VALUE(hive)
 - last(col, ignorenulls=False): LAST_VALUE(hive)
-```
 ---
 # Analytic functions
 - cume_dist: 累计分布，返回低于当前行的行的百分数
@@ -78,6 +79,24 @@ spark.range(10).select(cume_dist().over(Window.partitionBy(lit(1)).orderBy('id')
 
 ---
 # Aggregate functions
+```
+# 广播
+spark.range(10).withColumn('new', expr("id - mean(id) OVER()")).show()
++---+----+
+| id| new|
++---+----+
+|  0|-4.5|
+|  1|-3.5|
+|  2|-2.5|
+|  3|-1.5|
+|  4|-0.5|
+|  5| 0.5|
+|  6| 1.5|
+|  7| 2.5|
+|  8| 3.5|
+|  9| 4.5|
++---+----+
+```
 
 
   [1]: http://lxw1234.com/archives/tag/hive-window-functions
