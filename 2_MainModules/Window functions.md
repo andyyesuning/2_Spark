@@ -1,4 +1,4 @@
-# [窗口函数][1]
+# :rocket: [Window functions][1] :facepunch:
 ---
 # pyspark.sql.Window
 > over开窗
